@@ -17,10 +17,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 """
-version = '0.41'
+version = '0.42'
 title_text = "K40 Whisperer V"+version
 
 import sys
+from playsound import playsound
 from math import *
 from egv import egv
 from nano_library import K40_CLASS
@@ -2913,6 +2914,7 @@ class Application(Frame):
 
 
     def Vector_Eng_Cut(self, output_filename=None):
+        
         self.stop[0]=False
         self.set_gui("disabled")
         self.statusbar.configure( bg = 'green' )
@@ -2996,6 +2998,8 @@ class Application(Frame):
                 msg2=msg2+'\n\nBatch File Errors:\n'+stderr
             self.run_time = 0
             message_box(msg1, msg2)
+        
+        playsound('completed.mp3', 0 )
 
 
     def make_trace_path(self):
